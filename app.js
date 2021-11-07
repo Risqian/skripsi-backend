@@ -10,8 +10,8 @@ var favicon = require('serve-favicon');
 const cors = require('cors');
 
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb+srv://risqian99:Trew5432_@cluster0.slkrb.mongodb.net/db_staycation2?retryWrites=true&w=majority', {
-mongoose.connect('mongodb://localhost:27017/db_shootfutsal', {
+mongoose.connect('mongodb+srv://risqian99:Trew5432_@cluster0.slkrb.mongodb.net/db_shootfutsal?retryWrites=true&w=majority', {
+  // mongoose.connect('mongodb://localhost:27017/db_shootfutsal', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

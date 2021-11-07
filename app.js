@@ -6,6 +6,8 @@ var logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+var favicon = require('serve-favicon');
+const cors = require('cors');
 
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb+srv://risqian99:Trew5432_@cluster0.slkrb.mongodb.net/db_staycation2?retryWrites=true&w=majority', {
@@ -20,7 +22,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // router admin
 const adminRouter = require('./routes/admin');
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -35,7 +37,8 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 app.use(flash());
-// app.use(cors());
+app.use(favicon(__dirname + '/public/images/logo-soccer.png'));
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -48,7 +51,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // admin
 app.use('/admin', adminRouter)
-// app.use('/api/v1/member', apiRouter);
+app.use('/api/v1/member', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

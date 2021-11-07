@@ -1,6 +1,4 @@
 const Item = require('../models/Item');
-const Treasure = require('../models/Activity');
-const Treveler = require('../models/Booking');
 const Category = require('../models/Category');
 const Bank = require('../models/Bank');
 const Booking = require('../models/Booking');
@@ -9,6 +7,14 @@ const Member = require('../models/Member');
 module.exports = {
   landingPage: async (req, res) => {
     try {
+      const player = await Member.find();
+      const item = await Item.find();
+
+      let newArr = [];
+      item.forEach(x => newArr.push(x.city))
+      const city = [...new Set(newArr)];
+
+
       const mostPicked = await Item.find()
         .select('_id title village city price unit imageId')
         .limit(5)
@@ -19,7 +25,7 @@ module.exports = {
         .limit(3)
         .populate({
           path: 'itemId',
-          select: '_id title village city isPopular  imageId',
+          select: '_id title village city isPopular imageId',
           perDocumentLimit: 4,
           option: { sort: { sumBooking: -1 } },
           populate: {
@@ -29,9 +35,6 @@ module.exports = {
           }
         })
 
-      const treveler = await Treveler.find();
-      const treasure = await Treasure.find();
-      const city = await Item.find();
 
       for (let i = 0; i < category.length; i++) {
         for (let x = 0; x < category[i].itemId.length; x++) {
@@ -47,18 +50,18 @@ module.exports = {
 
       const testimonial = {
         _id: "asd1293uasdads1",
-        imageUrl: "images/testimonial2.jpg",
-        name: "Happy Family",
+        imageUrl: "images/google.jpg",
+        name: "Fun Place",
         rate: 4.55,
-        content: "What a great trip with my family and I should try again next time soon ...",
-        familyName: "Angga",
-        familyOccupation: "Product Designer"
+        content: "Nice court and we really enjoyed the game. We will come here again when we play ...",
+        familyName: "Bayu Saptaji",
+        familyOccupation: "Futsal Atlet"
       }
 
       res.status(200).json({
         hero: {
-          travelers: treveler.length,
-          treasures: treasure.length,
+          players: player.length * 10,
+          arena: item.length,
           cities: city.length
         },
         mostPicked,
@@ -83,12 +86,12 @@ module.exports = {
 
       const testimonial = {
         _id: "asd1293uasdads1",
-        imageUrl: "images/testimonial1.jpg",
-        name: "Happy Family",
+        imageUrl: "images/google.jpg",
+        name: "Fun Place",
         rate: 4.55,
-        content: "What a great trip with my family and I should try again next time soon ...",
-        familyName: "Angga",
-        familyOccupation: "Product Designer"
+        content: "Nice court and we really enjoyed the game. We will come here again when we play ...",
+        familyName: "Bayu Saptaji",
+        familyOccupation: "Futsal Atlet"
       }
 
       res.status(200).json({

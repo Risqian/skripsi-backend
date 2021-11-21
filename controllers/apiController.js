@@ -113,7 +113,7 @@ module.exports = {
       // bookingStartDate,
       // bookingEndDate,
       bookingDate,
-      bookingHour,
+      // bookingHour,
       firstName,
       lastName,
       email,
@@ -135,7 +135,7 @@ module.exports = {
       // bookingStartDate === undefined ||
       // bookingEndDate === undefined ||
       bookingDate === undefined ||
-      bookingHour === undefined ||
+      // bookingHour === undefined ||
       firstName === undefined ||
       lastName === undefined ||
       email === undefined ||
@@ -172,7 +172,7 @@ module.exports = {
       // bookingStartDate,
       // bookingEndDate,
       bookingDate,
-      bookingHour,
+      // bookingHour,
       total: total += tax,
       itemId: {
         _id: item.id,

@@ -14,10 +14,10 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  bookingHour: {
-    type: String,
-    required: true
-  },
+  // bookingHour: {
+  //   type: String,
+  //   required: true
+  // },
   invoice: {
     type: String,
     required: true

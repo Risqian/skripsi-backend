@@ -390,7 +390,7 @@ var data = [
         // bookingStartDate: '12-12-2020',
         // bookingEndDate: '12-12-2020',
         bookingDate: '2020-12-12T19:00:00Z',
-        bookingHour: '19:00',
+        // bookingHour: '19:00',
         invoice: 1231231,
         itemId: {
           _id: mongoose.Types.ObjectId('5e96cbe292b97300fc902222'),

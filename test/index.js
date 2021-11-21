@@ -63,7 +63,7 @@ describe('API ENDPOINT TESTING', () => {
       // bookingStartDate: '9-4-2020',
       // bookingEndDate: '11-4-2020',
       bookingDate: '2021-11-07T10:09:03.000Z',
-      bookingHour: '2',
+      // bookingHour: '2',
       firstName: 'itce',
       lastName: 'diasari',
       email: 'itce@gmail.com',
@@ -78,7 +78,7 @@ describe('API ENDPOINT TESTING', () => {
       // .field('bookingStartDate', dataSample.bookingStartDate)
       // .field('bookingEndDate', dataSample.bookingEndDate)
       .field('bookingDate', dataSample.bookingDate)
-      .field('bookingHour', dataSample.bookingHour)
+      // .field('bookingHour', dataSample.bookingHour)
       .field('firstName', dataSample.firstName)
       .field('lastName', dataSample.lastName)
       .field('email', dataSample.email)
@@ -94,7 +94,7 @@ describe('API ENDPOINT TESTING', () => {
         expect(res.body.message).to.equal('Success Booking')
         expect(res.body).to.have.property('booking')
         // expect(res.body.booking).to.have.all.keys('payments', '_id', 'invoice', 'bookingStartDate', 'bookingEndDate', 'total', 'itemId', 'memberId', '__v')
-        expect(res.body.booking).to.have.all.keys('payments', '_id', 'invoice', 'bookingDate', 'bookingHour', 'total', 'itemId', 'memberId', '__v')
+        expect(res.body.booking).to.have.all.keys('payments', '_id', 'invoice', 'bookingDate', 'total', 'itemId', 'memberId', '__v')
         expect(res.body.booking.payments).to.have.all.keys('status', 'proofPayment', 'bankFrom', 'accountHolder')
         expect(res.body.booking.itemId).to.have.all.keys('_id', 'title', 'price', 'duration')
         done();

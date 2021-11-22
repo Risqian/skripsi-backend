@@ -9,7 +9,7 @@ const Member = require('../models/Member');
 const Users = require('../models/Users');
 const fs = require('fs-extra');
 const path = require('path');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 module.exports = {
    viewSignin: async (req, res) => {
@@ -610,7 +610,8 @@ module.exports = {
          res.render('admin/booking/view_booking', {
             title: "ShootFutsal | Booking",
             user: req.session.user,
-            booking
+            booking,
+            realDate
          });
       } catch (error) {
          res.redirect('/admin/booking');

@@ -610,8 +610,7 @@ module.exports = {
          res.render('admin/booking/view_booking', {
             title: "ShootFutsal | Booking",
             user: req.session.user,
-            booking,
-            realDate
+            booking
          });
       } catch (error) {
          res.redirect('/admin/booking');

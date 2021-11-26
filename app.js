@@ -39,6 +39,7 @@ app.use(session({
 app.use(flash());
 app.use(favicon(__dirname + '/public/images/logo-soccer.png'));
 app.use(cors());
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(logger('dev'));
 app.use(express.json());

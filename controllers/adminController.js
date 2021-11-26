@@ -441,18 +441,21 @@ module.exports = {
 
    addFeature: async (req, res) => {
       const { name, qty, itemId } = req.body;
+      console.log("name : ", name)
+      const obj = JSON.parse(name)
 
       try {
-         if (!req.file) {
-            req.flash('alertMessage', 'Image not found');
-            req.flash('alertStatus', 'danger');
-            res.redirect(`/admin/item/show-detail-item/${itemId}`);
-         }
+         // if (!req.file) {
+         //    req.flash('alertMessage', 'Image not found');
+         //    req.flash('alertStatus', 'danger');
+         //    res.redirect(`/admin/item/show-detail-item/${itemId}`);
+         // }
          const feature = await Feature.create({
-            name,
+            name: obj.nama,
             qty,
             itemId,
-            imageUrl: `images/${req.file.filename}`
+            // imageUrl: `images/${req.file.filename}`
+            imageUrl: `images/${obj.image}`
          });
 
          const item = await Item.findOne({ _id: itemId });

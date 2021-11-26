@@ -195,7 +195,7 @@ module.exports = {
             req.flash('alertStatus', 'success');
             res.redirect('/admin/bank');
          } else {
-            await fs.unlink(path.join(`public/${bank.imageUrl}`));
+            await fs.unlink(path.join(`${bank.imageUrl}`));
             bank.name = name;
             bank.nameBank = nameBank;
             bank.nomorRekening = nomorRekening;
@@ -216,7 +216,7 @@ module.exports = {
       try {
          const { id } = req.params;
          const bank = await Bank.findOne({ _id: id });
-         await fs.unlink(path.join(`public/${bank.imageUrl}`));
+         await fs.unlink(path.join(`${bank.imageUrl}`));
          await bank.remove();
          req.flash('alertMessage', 'Success Delete Bank');
          req.flash('alertStatus', 'success');
@@ -350,7 +350,7 @@ module.exports = {
             if (req.files.length == 3) {
                for (let i = 0; i < item.imageId.length; i++) {
                   const imageUpdate = await Image.findOne({ _id: item.imageId[i]._id });
-                  await fs.unlink(path.join(`public/${imageUpdate.imageUrl}`));
+                  await fs.unlink(path.join(`${imageUpdate.imageUrl}`));
                   imageUpdate.imageUrl = `images/${req.files[i].filename}`;
                   await imageUpdate.save();
                }
@@ -394,7 +394,7 @@ module.exports = {
          const item = await Item.findOne({ _id: id }).populate('imageId');
          for (let i = 0; i < item.imageId.length; i++) {
             Image.findOne({ _id: item.imageId[i]._id }).then((image) => {
-               fs.unlink(path.join(`public/${image.imageUrl}`));
+               fs.unlink(path.join(`${image.imageUrl}`));
                image.remove();
             }).catch((error) => {
                req.flash('alertMessage', `${error.message}`);
@@ -480,7 +480,7 @@ module.exports = {
             req.flash('alertStatus', 'success');
             res.redirect(`/admin/item/show-detail-item/${itemId}`);
          } else {
-            await fs.unlink(path.join(`public/${feature.imageUrl}`));
+            await fs.unlink(path.join(`${feature.imageUrl}`));
             feature.name = name;
             feature.qty = qty;
             feature.imageUrl = `images/${req.file.filename}`
@@ -508,7 +508,7 @@ module.exports = {
                await item.save();
             }
          }
-         await fs.unlink(path.join(`public/${feature.imageUrl}`));
+         await fs.unlink(path.join(`${feature.imageUrl}`));
          await feature.remove();
          req.flash('alertMessage', 'Success Delete Feature');
          req.flash('alertStatus', 'success');

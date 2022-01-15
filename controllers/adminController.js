@@ -455,8 +455,8 @@ module.exports = {
             qty,
             itemId,
             // imageUrl: `images/${req.file.filename}`
-            imageUrl: `images/${obj.image}`
-            // imageUrl: `${obj.image}`
+            // imageUrl: `images/${obj.image}`
+            imageUrl: `${obj.image}`
          });
 
          const item = await Item.findOne({ _id: itemId });

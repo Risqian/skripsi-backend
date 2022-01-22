@@ -476,23 +476,24 @@ module.exports = {
       const { id, name, qty, itemId } = req.body;
       try {
          const feature = await Feature.findOne({ _id: id });
-         if (req.file == undefined) {
-            feature.name = name;
-            feature.qty = qty;
-            await feature.save();
-            req.flash('alertMessage', 'Success Update Feature');
-            req.flash('alertStatus', 'success');
-            res.redirect(`/admin/item/show-detail-item/${itemId}`);
-         } else {
-            await fs.unlink(path.join(`${feature.imageUrl}`));
-            feature.name = name;
-            feature.qty = qty;
-            feature.imageUrl = `images/${req.file.filename}`
-            await feature.save();
-            req.flash('alertMessage', 'Success Update Feature');
-            req.flash('alertStatus', 'success');
-            res.redirect(`/admin/item/show-detail-item/${itemId}`);
-         }
+         // if (req.file == undefined) {
+         //    feature.name = name;
+         //    feature.qty = qty;
+         //    await feature.save();
+         //    req.flash('alertMessage', 'Success Update Feature');
+         //    req.flash('alertStatus', 'success');
+         //    res.redirect(`/admin/item/show-detail-item/${itemId}`);
+         // } else {
+         // await fs.unlink(path.join(`${feature.imageUrl}`));
+         feature.name = name;
+         feature.qty = qty;
+         // feature.imageUrl = `images/${req.file.filename}`
+         feature.imageUrl = `${obj.image}`
+         await feature.save();
+         req.flash('alertMessage', 'Success Update Feature');
+         req.flash('alertStatus', 'success');
+         res.redirect(`/admin/item/show-detail-item/${itemId}`);
+         // }
       } catch (error) {
          req.flash('alertMessage', `${error.message}`);
          req.flash('alertStatus', 'danger');

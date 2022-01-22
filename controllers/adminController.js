@@ -474,6 +474,7 @@ module.exports = {
 
    editFeature: async (req, res) => {
       const { id, name, qty, itemId } = req.body;
+      const obj = JSON.parse(name)
       try {
          const feature = await Feature.findOne({ _id: id });
          // if (req.file == undefined) {
@@ -485,7 +486,7 @@ module.exports = {
          //    res.redirect(`/admin/item/show-detail-item/${itemId}`);
          // } else {
          // await fs.unlink(path.join(`${feature.imageUrl}`));
-         feature.name = name;
+         feature.name = obj.nama;
          feature.qty = qty;
          // feature.imageUrl = `images/${req.file.filename}`
          feature.imageUrl = `${obj.image}`

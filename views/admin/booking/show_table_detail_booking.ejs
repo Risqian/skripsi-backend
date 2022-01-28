@@ -9,7 +9,7 @@
         <img src="https://admin-shootfutsal.herokuapp.com/<%= booking.payments.proofPayment %>" alt="image"
           style="width: 100%; display: block;">
 
-        <div class="row ml-1">
+        <div class="row ml-4 mt-3">
           <% if(booking.payments.status=='Proses' ) {%>
 
             <form action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT" method="POST">
@@ -18,7 +18,7 @@
                 Confirmation
               </button>
             </form>
-            <form action="/admin/booking/<%= booking.id %>/reject?_method=PUT" method="POST" class="ml-2">
+            <form action="/admin/booking/<%= booking.id %>/reject?_method=PUT" method="POST" class="ml-5">
               <button type="submit" class="btn btn-danger btn-sm">
                 <i class="fas fa-times"></i>
                 Reject

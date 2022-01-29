@@ -50,7 +50,7 @@ module.exports = {
 
       const testimonial = {
         _id: "asd1293uasdads1",
-        imageUrl: "images/google.jpg",
+        imageUrl: "images/bayusaptaji.jpg",
         name: "Fun Place",
         rate: 4.55,
         content: "Nice court and we really enjoyed the game. We will come here again when we play ...",
@@ -86,7 +86,7 @@ module.exports = {
 
       const testimonial = {
         _id: "asd1293uasdads1",
-        imageUrl: "images/google.jpg",
+        imageUrl: "images/bayusaptaji.jpg",
         name: "Fun Place",
         rate: 4.55,
         content: "Nice court and we really enjoyed the game. We will come here again when we play ...",

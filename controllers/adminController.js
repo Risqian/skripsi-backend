@@ -10,6 +10,7 @@ const Users = require('../models/Users');
 const fs = require('fs-extra');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const cloudinary = require('../middlewares/cloudinary');
 
 module.exports = {
    viewSignin: async (req, res) => {
@@ -147,6 +148,7 @@ module.exports = {
    viewBank: async (req, res) => {
       try {
          const bank = await Bank.find();
+         console.log("Bank : ", bank)
          const alertMessage = req.flash('alertMessage');
          const alertStatus = req.flash('alertStatus');
          const alert = { message: alertMessage, status: alertStatus };
@@ -166,11 +168,15 @@ module.exports = {
    addBank: async (req, res) => {
       try {
          const { name, nameBank, nomorRekening } = req.body;
+         const result = await cloudinary.uploader.upload(req.file.path);
+         console.log("result : ", result)
          await Bank.create({
             name,
             nameBank,
             nomorRekening,
-            imageUrl: `images/${req.file.filename}`
+            // imageUrl: `images/${req.file.filename}`,
+            imageUrl: result.secure_url,
+            cloudinary_id: result.public_id
          });
          req.flash('alertMessage', 'Success Add Bank');
          req.flash('alertStatus', 'success');

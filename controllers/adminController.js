@@ -222,7 +222,8 @@ module.exports = {
       try {
          const { id } = req.params;
          const bank = await Bank.findOne({ _id: id });
-         await fs.unlink(path.join(`${bank.imageUrl}`));
+         // await fs.unlink(path.join(`${bank.imageUrl}`));
+         await cloudinary.uploader.destroy(bank.cloudinary_id);
          await bank.remove();
          req.flash('alertMessage', 'Success Delete Bank');
          req.flash('alertStatus', 'success');

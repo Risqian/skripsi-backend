@@ -1,8 +1,10 @@
+const { diskStorage } = require("multer");
 const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-  destination: "public/images",
+  // destination: "public/images",
+  destination: diskStorage({}),
   // destination: (req, file, cb) => {
   //   cb(null, 'images')
   // },

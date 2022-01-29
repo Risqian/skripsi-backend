@@ -45,11 +45,7 @@ const itemSchema = new mongoose.Schema({
   featureId: [{
     type: ObjectId,
     ref: 'Feature'
-  }],
-  // activityId: [{
-  //   type: ObjectId,
-  //   ref: 'Activity'
-  // }]
+  }]
 })
 
 module.exports = mongoose.model('Item', itemSchema)

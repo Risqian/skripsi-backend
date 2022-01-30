@@ -167,6 +167,8 @@ module.exports = {
       phoneNumber
     });
 
+    const result = await cloudinary.uploader.upload(req.file.path);
+
     const newBooking = {
       invoice,
       // bookingStartDate,
@@ -183,7 +185,9 @@ module.exports = {
 
       memberId: member.id,
       payments: {
-        proofPayment: `images/${req.file.filename}`,
+        // proofPayment: `images/${req.file.filename}`,
+        proofPayment: result.secure_url,
+        cloudinary_id: result.public_id,
         bankFrom: bankFrom,
         accountHolder: accountHolder
       }

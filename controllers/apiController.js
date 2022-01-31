@@ -168,7 +168,7 @@ module.exports = {
     });
 
     const result = await cloudinary.uploader.upload(req.file.path);
-    console.log("req.file : ", req.file)
+
     const newBooking = {
       invoice,
       // bookingStartDate,

@@ -17,10 +17,10 @@ const bankSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  cloudinary_id: {
-    type: String,
-    required: true
-  }
+  // cloudinary_id: {
+  //   type: String,
+  //   required: true
+  // }
 })
 
 module.exports = mongoose.model('Bank', bankSchema)

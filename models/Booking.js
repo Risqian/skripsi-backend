@@ -58,10 +58,10 @@ const bookingSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    cloudinary_id: {
-      type: String,
-      required: true
-    },
+    // cloudinary_id: {
+    //   type: String,
+    //   required: true
+    // },
     bankFrom: {
       type: String,
       required: true

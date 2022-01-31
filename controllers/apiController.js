@@ -3,6 +3,7 @@ const Category = require('../models/Category');
 const Bank = require('../models/Bank');
 const Booking = require('../models/Booking');
 const Member = require('../models/Member');
+const cloudinary = require('../middlewares/cloudinary');
 
 module.exports = {
   landingPage: async (req, res) => {
@@ -167,7 +168,7 @@ module.exports = {
       phoneNumber
     });
 
-    // const result = await cloudinary.uploader.upload(req.file.path);
+    const result = await cloudinary.uploader.upload(req.file.path);
 
     const newBooking = {
       invoice,
@@ -185,9 +186,9 @@ module.exports = {
 
       memberId: member.id,
       payments: {
-        proofPayment: `images/${req.file.filename}`,
-        // proofPayment: result.secure_url,
-        // cloudinary_id: result.public_id,
+        // proofPayment: `images/${req.file.filename}`,
+        proofPayment: result.secure_url,
+        cloudinary_id: result.public_id,
         bankFrom: bankFrom,
         accountHolder: accountHolder
       }
